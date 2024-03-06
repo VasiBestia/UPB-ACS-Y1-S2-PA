@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 int function(int x) {
-  if (x < 0)
-    return x;
+  if (x <= 0)
+    return 0;
   x = x - 2;
   x = function(x);  // infinite loop
   return x;
