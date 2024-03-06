@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int function(int x) {
-  if (x <= 0)
+  if (x < 0)
     return 0;
   x = x - 2;
   x = function(x);  // infinite loop
@@ -14,7 +14,7 @@ int main() {
 
   while (a > 0) {
     a = function(a);
-    i++;
+    i+=2;
   }
   printf("%d", i);
   return 0;
