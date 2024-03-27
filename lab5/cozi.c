@@ -1,7 +1,4 @@
 #include "cozi.h"
-#include <limits.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 Queue* createQueue() {
   Queue* q;

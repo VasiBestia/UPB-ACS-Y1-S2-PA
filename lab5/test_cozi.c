@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "cozi.h"
 
 #define ARR_SIZE 10
