@@ -34,6 +34,24 @@ int deQueue(Queue* q) {
   return d;
 }
 
+int deQueueRear(Queue* q) {
+  Node* aux;
+  int d;
+  if (isEmpty(q))
+    return INT_MIN;
+
+  aux = q->rear;
+  d = aux->val;
+  q->rear = (q->rear)->prev;
+
+  if (q->rear == NULL)
+    q->front = NULL;
+  else
+    q->rear->next = NULL;
+  free(aux);
+  return d;
+}
+
 void enQueue(Queue* q, int v) {
   Node* newNode = (Node*)malloc(sizeof(Node));
   newNode->val = v;
@@ -49,4 +67,21 @@ void enQueue(Queue* q, int v) {
 
   if (q->front == NULL)
     q->front = q->rear;
+}
+
+void enQueueFront(Queue* q, int v) {
+  Node* newNode = (Node*)malloc(sizeof(Node));
+  newNode->val = v;
+  newNode->next = NULL;
+
+  if (q->front == NULL)
+    q->front = newNode;
+  else {
+    newNode->next = q->front;
+    (q->front)->prev = newNode;
+    (q->front) = newNode;
+  }
+
+  if (q->rear == NULL)
+    q->rear = q->front;
 }

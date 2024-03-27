@@ -14,3 +14,6 @@ Queue* createQueue();
 int isEmpty(Queue*);
 int deQueue(Queue*);
 void enQueue(Queue*, int);
+
+int deQueueRear(Queue*);
+void enQueueFront(Queue*, int);
