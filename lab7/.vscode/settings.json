@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "stdlib.h": "c",
+    "cozi.h": "c",
+    "bit": "c",
+    "type_traits": "c"
+  }
+}
