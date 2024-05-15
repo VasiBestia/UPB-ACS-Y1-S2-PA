@@ -4,6 +4,15 @@
 #include <time.h>
 #include "cozi.h"
 
+void processLane(Queue* lane, int* n, bool* foundCar, int exitCars) {
+  for (int i = 0; i < exitCars && !*foundCar; i++) {
+    if (isEmpty(lane) || *n == 1)
+      *foundCar = true;
+    deQueue(lane);
+    (*n)--;
+  }
+}
+
 int main() {
   srand(time(NULL));
   int n1, n2;
@@ -37,18 +46,12 @@ int main() {
     int exitCarsLane1 = rand() % 7 + 1;
     int exitCarsLane2 = rand() % 7 + 1;
 
-    for (int i = 0; i < exitCarsLane1 && !foundCar; i++) {
-      if (isEmpty(lane1) || n1 == 1)
-        foundCar = true;
-      deQueue(lane1);
-      n1--;
-    }
-
-    for (int i = 0; i < exitCarsLane2 && !foundCar; i++) {
-      if (isEmpty(lane2) || n2 == 1)
-        foundCar = true;
-      deQueue(lane2);
-      n2--;
+    if (prevN1 < prevN2) {
+      processLane(lane1, &n1, &foundCar, exitCarsLane1);
+      processLane(lane2, &n2, &foundCar, exitCarsLane2);
+    } else {
+      processLane(lane2, &n2, &foundCar, exitCarsLane2);
+      processLane(lane1, &n1, &foundCar, exitCarsLane1);
     }
 
     if (prevN1 < prevN2)
